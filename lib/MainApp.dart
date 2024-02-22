@@ -1,41 +1,90 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weather_app/SearchAndFilter.dart';
+import 'package:http/http.dart' as http;
 
-class MainApp extends StatelessWidget {
+class MainApp extends StatefulWidget {
   const MainApp({super.key});
 
+  @override
+  State<MainApp> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> {
+  String uri =
+      "http://api.weatherapi.com/v1/current.json?key=f6aedda0032042e1812150300231109&q=London&aqi=no";
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        Row(
+        const SearchAndFilter(),
+        Card(
+            child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Expanded(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.0),
-                child: TextField(
+            const Column(
+              children: [
+                Text(
+                  "Addis Ababa",
                   textAlign: TextAlign.center,
-                  decoration: InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(vertical: 10.0),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.black)),
-                      hintStyle: TextStyle(color: Colors.grey),
-                      hintText: "Enter A City"),
+                  style: TextStyle(fontSize: 20.0),
                 ),
-              ),
+                Text(
+                  "30.0\u2103",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20.0),
+                )
+              ],
             ),
             Container(
-              margin: const EdgeInsets.all(10.0),
-              child: const ElevatedButton(
-                onPressed: null,
-                style: ButtonStyle(
-                    padding: MaterialStatePropertyAll(EdgeInsets.all(20.0))),
-                child: Icon(Icons.sunny),
-              ),
-            )
+                margin: const EdgeInsets.only(left: 20.0),
+                child: const Icon(
+                  Icons.sunny,
+                  color: Colors.orange,
+                  size: 100.0,
+                ))
           ],
-        )
+        ))
       ],
     );
   }
+
+  Future<Map> getCityInfo() {
+    Uri uriAbstraction = Uri.parse(uri);
+    Uri edited = uriAbstraction.replace(query: "Addis Ababa");
+    Future<http.Response> getResponse= http.get(edited);
+
+    Map<String,String> cityInfo=["name":getResponse];
+
+    return cityInfo;
+  }
 }
+
+/*
+class Album {
+  final int userId;
+  final int id;
+  final String title;
+
+  const Album({
+    required this.userId,
+    required this.id,
+    required this.title,
+  });
+
+  factory Album.fromJson(Map<String, dynamic> json) {
+    return switch (json) {
+      {
+        'userId': int userId,
+        'id': int id,
+        'title': String title,
+      } =>
+        Album(
+          userId: userId,
+          id: id,
+          title: title,
+        ),
+      _ => throw const FormatException('Failed to load album.'),
+    };
+  }
+}
+*/
