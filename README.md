@@ -1,16 +1,15 @@
-# flutter_weather_app
+<h1>Flutter Weather App</h1>
 
-A new Flutter project.
+My Second Project About the Weather App
 
-## Getting Started
+<h1>About App</h1> 
 
-This project is a starting point for a Flutter application.
+<h1>Installation</h1>
+<p>Install Flutter</p>
 
-A few resources to get you started if this is your first Flutter project:
+<a href="https://docs.flutter.dev/get-started/install">Install Flutter</a>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<h1>To Download Project</h1>
+```sh
+git clone 
+```
