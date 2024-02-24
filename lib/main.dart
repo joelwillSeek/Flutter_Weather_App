@@ -6,9 +6,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  final String uri =
-      "http://api.weatherapi.com/v1/current.json?key=f6aedda0032042e1812150300231109&q=London&aqi=no";
-
   const MyApp({super.key});
 
   @override
