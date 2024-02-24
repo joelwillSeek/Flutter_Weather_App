@@ -14,3 +14,5 @@ My Second Project About the Weather App
 ```sh
 git clone git@github.com:joelwillSeek/Flutter_Weather_App.git
 ```
+<h1>Contact</h1>
+<a href="joelthousend@gmail.com">joelthousend@gmail.com</a>
