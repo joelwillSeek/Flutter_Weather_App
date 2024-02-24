@@ -15,15 +15,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-      appBar: AppBar(
-        title: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          const Text("Weather"),
-          Container(
-              margin: const EdgeInsets.only(left: 10.0),
-              child: const Icon(Icons.sunny))
-        ]),
-      ),
+      appBar: getAppBar(),
       body: const MainApp(),
     ));
+  }
+
+  PreferredSizeWidget getAppBar() {
+    return AppBar(
+      title: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+        const Text("Weather"),
+        Container(
+            margin: const EdgeInsets.only(left: 10.0),
+            child: const Icon(Icons.sunny))
+      ]),
+    );
   }
 }

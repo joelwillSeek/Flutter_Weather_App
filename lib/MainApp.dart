@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_weather_app/SearchAndFilter.dart';
 import 'package:flutter_weather_app/weather_api.dart';
 
@@ -10,7 +12,7 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-  String query = "Addis Ababa";
+  String query = "Addis Abeba";
 
   TextEditingController textEditingController = TextEditingController();
 
@@ -22,30 +24,33 @@ class _MainAppState extends State<MainApp> {
           textEditingController: textEditingController,
           searchClicked: searchClicked,
         ),
-        FutureBuilder(future: getResponse(query), builder: buildTheCard)
+        Container(
+          alignment: Alignment.center,
+          child: FutureBuilder(
+              future: getResponse(query, context), builder: buildTheCard),
+        )
       ],
     );
   }
 
   Widget buildTheCard(BuildContext context, AsyncSnapshot<CityInfo?> snapshot) {
     return Card(
-      child: Row(children: [
+      child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
         Column(
           children: [
-            Text(snapshot.data?.cityName ?? "hi"),
-            Text(snapshot.data?.temperature ?? "hot")
+            Text(snapshot.data?.cityName ?? "no Data"),
+            Text(snapshot.data?.temperature ?? "no Data")
           ],
         ),
-        changeIcon(snapshot.data?.weatherCondition),
+        if (snapshot.data?.icon != null)
+          Image.network(snapshot.data!.icon ?? "")
+        else
+          SvgPicture.asset(
+            "assets/help.svg",
+            width: 50,
+          )
       ]),
     );
-  }
-
-  Widget changeIcon(String? weatherCondition) {
-    switch (weatherCondition) {
-      default:
-        return const Icon(Icons.sunny);
-    }
   }
 
   void searchClicked() {
