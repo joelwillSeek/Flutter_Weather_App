@@ -10,6 +10,7 @@ My Second Project About the Weather App
 <a href="https://docs.flutter.dev/get-started/install">Install Flutter</a>
 
 <h1>To Download Project</h1>
+
 ```sh
-git clone 
+git clone git@github.com:joelwillSeek/Flutter_Weather_App.git
 ```
