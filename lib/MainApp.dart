@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_weather_app/SearchAndFilter.dart';
 import 'package:flutter_weather_app/weather_api.dart';
@@ -17,6 +18,9 @@ class _MainAppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
+    Future.delayed(
+        Duration.zero, () => showDialog(context: context, builder: makeDialog));
+
     return ListView(
       children: [
         SearchAndFilter(
@@ -38,15 +42,21 @@ class _MainAppState extends State<MainApp> {
         Column(
           children: [
             Text(snapshot.data?.cityName ?? "no Data"),
-            Text(snapshot.data?.temperature ?? "no Data")
+            Text(snapshot.data?.temperature ?? "no Data"),
+            Text(snapshot.data?.weatherCondition ?? "no Data"),
+            Text(snapshot.data?.windSpeedInKph ?? "no Data"),
+            Text(snapshot.data?.humidity ?? "no Data")
           ],
         ),
         if (snapshot.data?.icon != null)
           Image.network(snapshot.data!.icon ?? "")
         else
-          SvgPicture.asset(
-            "assets/help.svg",
-            width: 50,
+          Container(
+            margin: const EdgeInsets.only(left: 20.0),
+            child: SvgPicture.asset(
+              "assets/help.svg",
+              width: 50,
+            ),
           )
       ]),
     );
@@ -57,5 +67,16 @@ class _MainAppState extends State<MainApp> {
     setState(() {
       query = getQuery;
     });
+  }
+
+  Widget makeDialog(BuildContext context) {
+    return const SimpleDialog(
+      backgroundColor: Colors.transparent,
+      children: [
+        SpinKitWave(
+          color: Colors.blue,
+        )
+      ],
+    );
   }
 }

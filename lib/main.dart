@@ -11,10 +11,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
-      appBar: getAppBar(),
-      body: const MainApp(),
-    ));
+          appBar: getAppBar(),
+          body: const MainApp(),
+        ));
   }
 
   PreferredSizeWidget getAppBar() {
