@@ -3,7 +3,7 @@
 My Second Project About the Weather App
 
 <h1>About App</h1> 
-<img src="https://github.com/joelwillSeek/Flutter_Weather_App/blob/main/demo/photo_2024-02-25_16-56-36.jpg"/>
+<img align="center" width="200" src="https://github.com/joelwillSeek/Flutter_Weather_App/blob/main/demo/photo_2024-02-25_16-56-36.jpg"/>
 <h1>Installation</h1>
 <p>Install Flutter</p>
 
